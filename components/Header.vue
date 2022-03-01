@@ -3,19 +3,8 @@
     <h1 class="grid-2col__left">Mirai-No-Niji</h1>
 
     <aside class="grid-2col__right">
-      <Burger></Burger>
-
-      <nav class="hidden">
-        <ul>
-          <li>
-            <nuxt-link class="" to="/"> Home </nuxt-link>
-          </li>
-
-          <li>
-            <nuxt-link class="" to="/en/blog"> Blog </nuxt-link>
-          </li>
-        </ul>
-      </nav>
+      <Burger />
+      <Navigation />
     </aside>
   </header>
 </template>

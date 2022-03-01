@@ -1,3 +1,10 @@
+const styleFiles = (path) => {
+  const fs = require('fs')
+  const files = fs.readdirSync(path)
+
+  return files.map(i => path + i)
+}
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -18,7 +25,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['./assets/scss/globals/resets.scss'],
+  css: styleFiles('./assets/scss/globals/'),
 
   // needed for style-resources module
   styleResources: {
@@ -42,6 +49,13 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: '81s4Cor3H041sHeymtMDSgtt',
+        cacheProvider: 'memory'
+      }
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

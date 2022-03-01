@@ -19,7 +19,10 @@ export default {
 $burger-height: 6px;
 $burger-width: 25px;
 $burger-width__center: 15px;
-$space: 15px;
+$burger-space: 15px;
+
+$burger-ScaleX__open: 1;
+$burger-translate__open: 5px;
 
 @mixin btn($right, $top) {
   //position: absolute;
@@ -72,11 +75,11 @@ $space: 15px;
     left: 0px;
 
     &:before {
-      @include icon-before($burger-height, $burger-width, -$space);
+      @include icon-before($burger-height, $burger-width, -$burger-space);
     }
 
     &:after {
-      @include icon-after($burger-height, $burger-width, $space);
+      @include icon-after($burger-height, $burger-width, $burger-space);
     }
 
     &:hover {
@@ -89,11 +92,11 @@ $space: 15px;
     left: 30px;
 
     &:before {
-      @include icon-before($burger-height, $burger-width, -$space);
+      @include icon-before($burger-height, $burger-width, -$burger-space);
     }
 
     &:after {
-      @include icon-after($burger-height, $burger-width, $space);
+      @include icon-after($burger-height, $burger-width, $burger-space);
     }
   }
 
@@ -103,11 +106,13 @@ $space: 15px;
       background: transparent;
 
       &:before {
-        transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
+        transform: rotateZ(45deg) scaleX($burger-ScaleX__open)
+          translate($burger-translate__open, $burger-translate__open);
       }
 
       &:after {
-        transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
+        transform: rotateZ(-45deg) scaleX($burger-ScaleX__open)
+          translate($burger-translate__open, -$burger-translate__open);
       }
     }
 
@@ -116,11 +121,13 @@ $space: 15px;
       background: transparent;
 
       &:before {
-        transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
+        transform: rotateZ(-45deg) scaleX($burger-ScaleX__open)
+          translate(-$burger-translate__open, $burger-translate__open);
       }
 
       &:after {
-        transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
+        transform: rotateZ(45deg) scaleX($burger-ScaleX__open)
+          translate(-$burger-translate__open, -$burger-translate__open);
       }
     }
   }
