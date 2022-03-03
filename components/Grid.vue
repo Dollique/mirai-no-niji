@@ -1,9 +1,14 @@
 <template>
-  <ul v-editable="blok" class="">
-    <li v-for="blok in blok.columns" :key="blok._uid" class="">
+  <div
+    v-editable="blok"
+    class="grid-wrapper"
+    :data-image-desktop="blok.image_desktop.filename"
+    :data-image-mobile="blok.image_mobile.filename"
+  >
+    <div v-for="blok in blok.columns" :key="blok._uid" class="">
       <component :is="blok.component" :blok="blok" />
-    </li>
-  </ul>
+    </div>
+  </div>
 </template>
 
 <script>
