@@ -1,11 +1,10 @@
 <template>
-  <div v-editable="blok" class="py-2">
-    <h1 class="text-lg">{{ blok.name }}</h1>
+  <div v-editable="blok">
+    <a :href="blok.href['cached_url']" :class="blok.class">{{ blok.title }}</a>
   </div>
 </template>
-
  
-
+ 
 <script>
 export default {
   props: {

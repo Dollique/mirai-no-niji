@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  layout: 'home',
   props: {
     blok: {
       type: Object,
