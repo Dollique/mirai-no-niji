@@ -1,5 +1,10 @@
 <template>
-  <section v-editable="blok" class="">
+  <section
+    v-editable="blok"
+    class="page"
+    :data-bg-image-desktop="blok.bg_image_desktop"
+    :data-bg-image-mobile="blok.bg_image_mobile"
+  >
     <h1>Welcome to the Future</h1>
 
     <component
@@ -13,7 +18,6 @@
 
 <script>
 export default {
-  layout: 'home',
   props: {
     blok: {
       type: Object,
