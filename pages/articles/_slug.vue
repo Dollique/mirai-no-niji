@@ -5,7 +5,7 @@
 </template>
  
 <script>
-import Article from '~/components/Article.vue'
+import Article from '~/components/templates/Article.vue'
 
 export default {
   components: {
