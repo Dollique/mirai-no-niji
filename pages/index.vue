@@ -1,27 +1,29 @@
 <template>
-  <section>
-    <component
-      :is="story.content.component"
-      v-if="story.content.component"
-      :key="story.content._uid"
-      :blok="story.content"
-    />
-  </section>
+  <component
+    :is="story.content.component"
+    v-if="story.content.component"
+    :key="story.content._uid"
+    :blok="story.content"
+  />
 </template>
-
- 
 
 <script>
 export default {
   asyncData(context) {
-    // // This what would we do in real project
-    // const version = context.query._storyblok || context.isDev ? 'draft' : 'published'
-    // const fullSlug = (context.route.path == '/' || context.route.path == '') ? 'home' : context.route.path
+    const version =
+      context.query._storyblok || context.isDev ? 'draft' : 'published'
+
+    const fullSlug =
+      context.route.path == '/' || context.route.path == ''
+        ? 'home'
+        : context.route.path
+
     // Load the JSON from the API - loadig the home content (index page)
 
-    return context.app.$storyapi
-      .get('cdn/stories/home', {
-        version: 'draft',
+    const myData = context.app.$storyapi
+      .get('cdn/stories/' + fullSlug, {
+        version,
+        resolve_relations: 'global_reference.reference',
       })
       .then((res) => {
         return res.data
@@ -43,6 +45,18 @@ export default {
           })
         }
       })
+
+    /* getGlobals = context.app.$storyapi
+
+    console.log('MY DATA', myData)
+    .get('cdn/stories/' + fullSlug, {
+        version,
+      })
+      .then((res) => {
+        return res.data
+      }) */
+
+    return myData
   },
 
   data() {

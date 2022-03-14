@@ -1,6 +1,8 @@
 <template>
   <header class="grid grid-2col col-8">
-    <h1 class="grid-2col__left">{{ myData.rels[0].content.site_title }}</h1>
+    <h1 class="grid-2col__left">
+      {{ blok[2].reference.content.site_title }}
+    </h1>
 
     <aside v-if="showNav" class="grid-2col__right">
       <Burger />
@@ -13,11 +15,6 @@
 import Burger from '~/components/site/Burger.vue'
 import Navigation from '~/components/site/Navigation.vue'
 
-const apiURL = 'stories/home?version=draft&token=81s4Cor3H041sHeymtMDSgtt'
-const getGlobals = '&resolve_relations=global_reference.reference'
-
-const getData = 'https://api.storyblok.com/v2/cdn/' + apiURL + getGlobals
-
 export default {
   components: {
     Burger,
@@ -29,16 +26,11 @@ export default {
       type: Boolean,
       default: true,
     },
+    blok: {
+      type: Object,
+      required: true,
+    },
   },
-  data: () => ({
-    myData: [],
-  }),
-  async fetch() {
-    this.myData = await this.$axios.$get(getData)
-  },
-  /* mounted() {
-    console.log(this.showNav)
-  }, */
 }
 </script>
 
