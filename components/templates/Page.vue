@@ -1,9 +1,15 @@
 <template>
   <div
     class="main-wrapper"
-    :data-bg-image-desktop="blok.bg_image_desktop"
-    :data-bg-image-mobile="blok.bg_image_mobile"
+    :data-bg-image-desktop="blok.bg_image_desktop['filename']"
+    :data-bg-image-mobile="blok.bg_image_mobile['filename']"
   >
+    <style>
+      :root {
+        --bg-image-desktop: url('{{ blok.bg_image_desktop.filename }}');
+        --bg-image-mobile: url('{{ blok.bg_image_mobile.filename }}');
+      }
+    </style>
     <Header :showNav="false" />
 
     <section v-editable="blok" class="page grid">
@@ -34,6 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/scss/mixins.scss';
 @import 'assets/scss/imports/headers.scss';
 @import 'assets/scss/imports/grid.scss';
 
@@ -48,4 +55,18 @@ section {
 .main-wrapper {
   height: 100%;
 }
-</style>
+
+.main-wrapper {
+  background-size: cover;
+}
+
+[data-bg-image-mobile] {
+  background-image: var(--bg-image-mobile);
+}
+
+@include for-desktop-up {
+  [data-bg-image-desktop] {
+    background-image: var(--bg-image-desktop);
+  }
+}
+</style> 

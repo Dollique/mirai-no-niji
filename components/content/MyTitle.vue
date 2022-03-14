@@ -1,9 +1,6 @@
 <template>
-  <div v-editable="blok" class="py-2">
-    <h1>{{ blok.name }}</h1>
-  </div>
+  <h1 v-editable="blok">{{ blok.name }}</h1>
 </template>
- 
 
 <script>
 export default {

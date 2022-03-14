@@ -2,7 +2,7 @@
   <header class="grid grid-2col col-8">
     <h1 class="grid-2col__left">{{ myData.rels[0].content.site_title }}</h1>
 
-    <aside class="grid-2col__right" v-if="showNav">
+    <aside v-if="showNav" class="grid-2col__right">
       <Burger />
       <Navigation />
     </aside>
