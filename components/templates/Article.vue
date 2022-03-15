@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-wrapper">
     <Header :blok="blok" />
 
     <div v-editable="blok">

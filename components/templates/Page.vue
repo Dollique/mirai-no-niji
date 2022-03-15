@@ -1,6 +1,7 @@
 <template>
   <div
     class="main-wrapper"
+    :class="routeClass"
     :data-bg-image-desktop="blok.bg_image_desktop['filename']"
     :data-bg-image-mobile="blok.bg_image_mobile['filename']"
   >
@@ -12,7 +13,7 @@
     </style>
     <Header :blok="blok" :showNav="false" />
 
-    <section v-editable="blok" class="page grid">
+    <section v-editable="blok" class="page flex">
       <component
         :is="blok.component"
         v-for="blok in blok.body"
@@ -36,6 +37,19 @@ export default {
       required: true,
     },
   },
+  data: () => ({
+    routeClass: '',
+  }),
+  fetch() {
+    let getRouteClass
+    if (typeof this.$nuxt.$route.params.slug !== 'undefined') {
+      getRouteClass = this.$nuxt.$route.params.slug
+    } else {
+      getRouteClass = 'home'
+    }
+
+    this.routeClass = 'route__' + getRouteClass
+  },
 }
 </script>
 
@@ -49,15 +63,26 @@ h1 {
   width: 100%;
 }
 
-section {
-}
-
 .main-wrapper {
   min-height: 100%;
+
+  display: grid;
+  grid-template-rows: minmax(100px, auto) 1fr;
 }
 
 .main-wrapper {
   background-size: cover;
+}
+
+.route__home .page {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
+
+.page {
+  flex-direction: column;
+  justify-content: center;
 }
 
 [data-bg-image-mobile] {

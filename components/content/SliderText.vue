@@ -45,6 +45,7 @@ export default {
   align-items: center;
 
   padding: $gutter;
+  padding-top: 0;
 }
 </style>
 
@@ -52,6 +53,8 @@ export default {
 .slider-item {
   font-size: 2em;
   text-align: center;
+
+  margin-top: 0;
 
   opacity: 0;
   grid-column: 1;
