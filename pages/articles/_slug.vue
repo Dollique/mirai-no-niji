@@ -1,7 +1,5 @@
 <template>
-  <section>
-    <Article :blok="story.content" />
-  </section>
+  <Article :blok="story.content" />
 </template>
  
 <script>
@@ -19,6 +17,7 @@ export default {
     return context.app.$storyapi
       .get(`cdn/stories/articles/${context.params.slug}`, {
         version,
+        resolve_relations: 'global_reference.reference',
       })
       .then((res) => {
         return res.data

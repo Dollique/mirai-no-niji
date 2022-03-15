@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :blok="blok" />
 
     <div v-editable="blok">
       <h1>{{ blok.title }}</h1>

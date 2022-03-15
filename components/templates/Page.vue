@@ -10,7 +10,7 @@
         --bg-image-mobile: url('{{ blok.bg_image_mobile.filename }}');
       }
     </style>
-    <Header :blok="blok.body" :showNav="false" />
+    <Header :blok="blok" :showNav="false" />
 
     <section v-editable="blok" class="page grid">
       <component
@@ -53,7 +53,7 @@ section {
 }
 
 .main-wrapper {
-  height: 100%;
+  min-height: 100%;
 }
 
 .main-wrapper {

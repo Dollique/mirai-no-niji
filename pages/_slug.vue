@@ -14,7 +14,7 @@ export default {
       context.query._storyblok || context.isDev ? 'draft' : 'published'
 
     const fullSlug =
-      context.route.path == '/' || context.route.path == ''
+      context.route.path === '/' || context.route.path === ''
         ? 'home'
         : context.route.path
 
