@@ -1,5 +1,5 @@
 <template>
-  <nav :class="{ hidden: !menuOpen }">
+  <nav :class="{ hidden: !navOpen }">
     <ul>
       <li>
         <nuxt-link class="" to="/"> Home </nuxt-link>
@@ -14,14 +14,11 @@
 
 <script>
 export default {
-  props: {
-    menuOpen: {
-      required: false,
-      type: Boolean,
-      default: false,
+  computed: {
+    navOpen() {
+      return this.$store.state.navigation.navOpen
     },
   },
-  methods: {},
 }
 </script>
 

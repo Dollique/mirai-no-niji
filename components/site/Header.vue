@@ -1,5 +1,5 @@
 <template>
-  <header class="grid grid-2col col-8" :class="{ menuOpen }">
+  <header class="grid grid-2col col-8" :class="{ navOpen }">
     <template v-if="blok">
       <template v-for="myblok in blok.globals">
         <h1
@@ -13,10 +13,10 @@
     </template>
 
     <aside v-if="showNav" class="grid-2col__right">
-      <Burger :menuOpen="menuOpen" @toggle="menuOpen = !menuOpen" />
+      <Burger />
     </aside>
 
-    <Navigation :menuOpen="menuOpen" />
+    <Navigation />
   </header>
 </template>
 
@@ -41,10 +41,10 @@ export default {
       default: () => undefined,
     },
   },
-  data() {
-    return {
-      menuOpen: false,
-    }
+  computed: {
+    navOpen() {
+      return this.$store.state.navigation.navOpen
+    },
   },
 }
 </script>
@@ -60,7 +60,7 @@ h1 {
   margin-top: 20px;
 }
 
-.menuOpen {
+.navOpen {
   position: absolute;
   height: 100vh;
   width: 100%;

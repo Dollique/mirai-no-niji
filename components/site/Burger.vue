@@ -1,23 +1,23 @@
 <template>
-  <div class="menu btn1" :class="{ open: menuOpen }" @click="menuClick">
+  <div class="menu btn1" :class="{ open: navOpen }" @click="toggle(navOpen)">
     <div class="icon-left"></div>
     <div class="icon-right"></div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
-  props: {
-    menuOpen: {
-      required: false,
-      type: Boolean,
-      default: false,
+  computed: {
+    navOpen() {
+      return this.$store.state.navigation.navOpen
     },
   },
   methods: {
-    menuClick(e) {
-      this.$emit('toggle')
-    },
+    ...mapMutations({
+      toggle: 'navigation/toggle',
+    }),
   },
 }
 </script>

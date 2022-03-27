@@ -28,6 +28,15 @@ export default {
       required: true,
     },
   },
+  computed: {
+    navOpen() {
+      /* console.log('CHANGE BODY CLASS')
+        document.body.classList.toggle('navOpen')
+      */
+
+      return this.$store.state.navigation.navOpen
+    },
+  },
 }
 </script>
 
@@ -38,5 +47,9 @@ export default {
   position: relative;
   margin: 0 $gutter;
   width: calc(100% - $gutter * 2);
+}
+
+.navOpen {
+  overflow: hidden;
 }
 </style>
