@@ -58,20 +58,18 @@ export default {
 @import 'assets/scss/imports/headers.scss';
 @import 'assets/scss/imports/grid.scss';
 
-h1 {
-  text-align: center;
-  width: 100%;
-}
-
 .main-wrapper {
   min-height: 100%;
 
   display: grid;
   grid-template-rows: minmax(100px, auto) 1fr;
+
+  background-size: cover;
 }
 
-.main-wrapper {
-  background-size: cover;
+h1 {
+  text-align: center;
+  width: 100%;
 }
 
 .route__home .page {

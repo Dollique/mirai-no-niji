@@ -30,3 +30,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import 'assets/scss/variables/structure.scss';
+
+.main-wrapper {
+  position: relative;
+  margin: 0 $gutter;
+  width: calc(100% - $gutter * 2);
+}
+</style>

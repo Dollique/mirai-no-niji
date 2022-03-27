@@ -1,5 +1,5 @@
 <template>
-  <header class="grid grid-2col col-8">
+  <header class="grid grid-2col col-8" :class="{ menuOpen }">
     <template v-if="blok">
       <template v-for="myblok in blok.globals">
         <h1
@@ -13,9 +13,10 @@
     </template>
 
     <aside v-if="showNav" class="grid-2col__right">
-      <Burger />
-      <Navigation />
+      <Burger :menuOpen="menuOpen" @toggle="menuOpen = !menuOpen" />
     </aside>
+
+    <Navigation :menuOpen="menuOpen" />
   </header>
 </template>
 
@@ -40,10 +41,36 @@ export default {
       default: () => undefined,
     },
   },
+  data() {
+    return {
+      menuOpen: false,
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import 'assets/scss/imports/grid.scss';
 @import 'assets/scss/imports/headers.scss';
+
+header {
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.menuOpen {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+
+  grid-auto-rows: minmax(100px, auto) 1fr;
+
+  background-color: $color-primary;
+
+  aside {
+  }
+}
 </style>

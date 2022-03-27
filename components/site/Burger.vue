@@ -1,5 +1,5 @@
 <template>
-  <div class="menu btn1" @click="menuClick">
+  <div class="menu btn1" :class="{ open: menuOpen }" @click="menuClick">
     <div class="icon-left"></div>
     <div class="icon-right"></div>
   </div>
@@ -7,9 +7,16 @@
 
 <script>
 export default {
+  props: {
+    menuOpen: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+  },
   methods: {
-    menuClick() {
-      this.$el.classList.toggle('open')
+    menuClick(e) {
+      this.$emit('toggle')
     },
   },
 }
