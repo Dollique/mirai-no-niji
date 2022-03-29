@@ -1,5 +1,15 @@
 <template>
   <nav :class="{ hidden: !navOpen }">
+    <template v-if="blok">
+      <template v-for="myblok in blok.globals">
+        <div
+          v-if="myblok.component === 'global_reference'"
+          :key="myblok._uid"
+          v-html="getNavigation(myblok.reference.content.Header_Navigation)"
+        ></div>
+      </template>
+    </template>
+
     <ul>
       <li>
         <nuxt-link class="" to="/"> Home </nuxt-link>
@@ -14,9 +24,38 @@
 
 <script>
 export default {
+  props: {
+    blok: {
+      type: Object,
+      required: false,
+      default: () => undefined,
+    },
+  },
   computed: {
     navOpen() {
       return this.$store.state.navigation.navOpen
+    },
+  },
+  methods: {
+    getNavigation(nav) {
+      let result
+
+      result = '<ul>'
+      for (const key in nav) {
+        if (nav.hasOwnProperty(key)) {
+          result += '<li><a>' + nav[key].display_name + '</a>'
+
+          const myObject = nav[key]
+          if (myObject.Sub_Category.length !== 0) {
+            result += this.getNavigation(myObject.Sub_Category)
+          }
+
+          result += '</li>'
+        }
+      }
+      result += '</ul>'
+
+      return result
     },
   },
 }

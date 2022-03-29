@@ -16,7 +16,7 @@
       <Burger />
     </aside>
 
-    <Navigation />
+    <Navigation :blok="blok" />
   </header>
 </template>
 
