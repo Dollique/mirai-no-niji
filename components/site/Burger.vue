@@ -14,6 +14,13 @@ export default {
       return this.$store.state.navigation.navOpen
     },
   },
+  watch: {
+    $route(to, from) {
+      console.log('route change to', to)
+      console.log('route change from', from)
+      // toggle(navOpen)
+    },
+  },
   methods: {
     ...mapMutations({
       toggle: 'navigation/toggle',

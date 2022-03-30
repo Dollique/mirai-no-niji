@@ -7,7 +7,9 @@
           :key="myblok._uid"
           class="grid-2col__left"
         >
-          {{ myblok.reference.content.site_title }}
+          <nuxt-link to="/">{{
+            myblok.reference.content.site_title
+          }}</nuxt-link>
         </h1>
       </template>
     </template>
@@ -58,6 +60,10 @@ header {
 
 h1 {
   margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .navOpen {
