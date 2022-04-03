@@ -23,6 +23,16 @@ body,
   padding: 0;
 }
 
+body {
+  &.navOpen {
+    overflow-y: hidden;
+    
+    .main-wrapper {
+      
+    }
+  }
+}
+
 .hidden {
   display: none;
 }

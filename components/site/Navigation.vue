@@ -116,9 +116,13 @@ nav ::v-deep {
   grid-row: 2;
   grid-column: 1 / span 2;
 
+  overflow-y: scroll;
+  width: 100vw; // shows scroll bar fully right
+  margin-left: -$gutter;
+
   ul {
     list-style: none;
-    margin: 0;
+    margin: 0 $gutter;
     padding: 0;
 
     ul {

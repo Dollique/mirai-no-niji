@@ -68,6 +68,7 @@ a {
 
 .navOpen {
   position: absolute;
+  z-index: 10;
   height: 100vh;
   width: 100%;
   top: 0;
