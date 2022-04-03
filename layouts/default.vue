@@ -13,12 +13,12 @@ export default {
     // watch for route change
     $route() {
       // set navigation toggle to false (close all navigation)
-      this.$store.commit('navigation/toggle', false)
+      this.$store.commit('navigation/close')
     },
     navOpen(store) {
-      // console.log("watching navOpen", store)
-      document.querySelector('body').classList.toggle('navOpen')
-    }
+      // console.log('navOpen() -> watching navOpen', store)
+      document.querySelector('body').classList.remove('navOpen')
+    },
   },
 }
 </script>
