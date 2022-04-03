@@ -56,6 +56,7 @@ export default {
 @import 'assets/scss/imports/headers.scss';
 
 header {
+  @include addGutter;
 }
 
 h1 {
@@ -70,7 +71,6 @@ a {
   position: absolute;
   z-index: 10;
   height: 100vh;
-  width: 100%;
   top: 0;
 
   grid-auto-rows: minmax(100px, auto) 1fr;

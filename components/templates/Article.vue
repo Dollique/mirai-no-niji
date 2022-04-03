@@ -45,11 +45,15 @@ export default {
 
 .main-wrapper {
   position: relative;
-  margin: 0 $gutter;
   height: 100%;
-  width: calc(100% - $gutter * 2);
+  width: 100%;
 
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+h1,
+div > p {
+  @include addGutter;
 }
 </style>

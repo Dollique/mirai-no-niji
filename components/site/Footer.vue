@@ -8,5 +8,6 @@
 
 <style lang="scss" scoped>
 footer {
+  @include addGutter;
 }
 </style>

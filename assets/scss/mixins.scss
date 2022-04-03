@@ -27,3 +27,8 @@
     @content;
   }
 }
+
+@mixin addGutter {
+  margin: 0 $gutter;
+  width: calc(100% - $gutter * 2);
+}
