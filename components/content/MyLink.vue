@@ -1,5 +1,5 @@
 <template>
-  <a v-editable="blok" :href="blok.href['cached_url']" :class="blok.type">
+  <nuxt-link v-editable="blok" :to="blok.href['cached_url']" :class="blok.type">
     {{ blok.title }}
 
     <svg
@@ -15,7 +15,7 @@
         stroke-width="1.32184"
       />
     </svg>
-  </a>
+  </nuxt-link>
 </template>
  
 <script>
