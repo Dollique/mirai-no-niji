@@ -1,12 +1,12 @@
 <template>
-  <div class="main-wrapper">
+  <div class="main-wrapper grid">
     <Header :blok="blok" />
 
-    <div v-editable="blok">
+    <main v-editable="blok">
       <h1>{{ blok.title }}</h1>
 
       <rich-text-renderer :document="blok.body" />
-    </div>
+    </main>
 
     <Footer />
   </div>
@@ -30,10 +30,6 @@ export default {
   },
   computed: {
     navOpen() {
-      /* console.log('CHANGE BODY CLASS')
-        document.body.classList.toggle('navOpen')
-      */
-
       return this.$store.state.navigation.navOpen
     },
   },
@@ -42,18 +38,37 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/scss/variables/structure.scss';
+@import 'assets/scss/imports/headers.scss';
+@import 'assets/scss/imports/grid.scss';
 
 .main-wrapper {
   position: relative;
   height: 100%;
   width: 100%;
 
-  display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-h1,
-div > p {
-  @include addGutter;
+main ::v-deep {
+  h1,
+  p {
+    @include addGutter;
+  }
+
+  h1 {
+    padding-bottom: 55px;
+  }
+
+  p {
+    padding-bottom: 20px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
 }
 </style>

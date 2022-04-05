@@ -77,6 +77,7 @@ export default {
 
       return result
     },
+
     /**
      * Prevents default browser behavior (page reload) for relative links.
      * https://github.com/d-darwin/darwin-vue-ui/blob/main/src/mixins/linkClickRouting.js
@@ -136,6 +137,7 @@ nav ::v-deep {
     border-bottom: 1px $color-white solid;
     font-size: $h2;
     text-decoration: none;
+    text-transform: uppercase;
     padding: 15px 0;
 
     &:hover {

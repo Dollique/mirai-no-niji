@@ -19,6 +19,8 @@ body,
   font-family: 'Special Elite', cursive, Arial, Helvetica, sans-serif;
   font-weight: lighter;
 
+  box-sizing: border-box;
+
   margin: 0;
   padding: 0;
 }
@@ -26,10 +28,6 @@ body,
 body {
   &.navOpen {
     overflow-y: hidden;
-    
-    .main-wrapper {
-      
-    }
   }
 }
 
@@ -40,3 +38,6 @@ body {
 .flex {
   display: flex;
 }
+
+/* CONTENT */
+

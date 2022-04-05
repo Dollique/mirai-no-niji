@@ -17,7 +17,7 @@ export default {
     },
     navOpen(store) {
       // console.log('navOpen() -> watching navOpen', store)
-      document.querySelector('body').classList.remove('navOpen')
+      document.querySelector('body').classList.toggle('navOpen')
     },
   },
 }
