@@ -1,6 +1,7 @@
 <template>
   <div>
-    {{blok}}
+    <label :for="`${blok.name}`">{{blok.name}}</label>
+    <input :type="`${blok.type}`" :id="`${blok.name}`" :name="`${blok.name}`" />
   </div>
 </template>
 
