@@ -25,7 +25,10 @@ body,
   padding: 0;
 }
 
+html,
 body {
+  font-size: 100%; // set base-size
+
   &.navOpen {
     overflow-y: hidden;
   }
@@ -40,4 +43,8 @@ body {
 }
 
 /* CONTENT */
+
+p {
+  @include fontSize(0.65rem, 2vw, 2.2rem);
+}
 

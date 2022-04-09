@@ -32,3 +32,24 @@
   margin: 0 $gutter;
   width: calc(100% - $gutter * 2);
 }
+
+// https://blog.logrocket.com/the-elements-of-responsive-typography/
+@mixin fontSize($rate, $vw, $max:0) {
+  font-size: calc($rate + $vw);
+
+  @include for-big-desktop-up {
+    @if $max != 0 {
+      font-size: $max;
+    }
+  }
+
+  /*font-size: $min;
+
+  @media (min-width: 414px) {
+    font-size: calc($min + $vw);
+  }
+
+  @include for-big-desktop-up {
+    font-size: $max;
+  }*/
+}

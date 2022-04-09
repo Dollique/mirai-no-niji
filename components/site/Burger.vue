@@ -34,7 +34,7 @@ $burger-translate__open: 5px;
 @mixin btn($right, $top) {
   //position: absolute;
   width: 50px;
-  height: 50px;
+  height: 36px;
   top: $top;
   right: $right;
   transition-duration: 0.5s;
@@ -48,7 +48,7 @@ $burger-translate__open: 5px;
   height: $height;
   width: $burger-width__center;
   //top: 30px;
-  transform: translateY(30px);
+  transform: translateY(15px);
   background-color: $color-white;
 }
 

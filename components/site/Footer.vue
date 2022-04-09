@@ -33,6 +33,7 @@ footer {
   @include addGutter;
 
   margin-top: 60px;
+  @include fontSize(0.7rem, 2.5vw);
 }
 
 hr {

@@ -57,10 +57,7 @@ export default {
 
 header {
   @include addGutter;
-}
-
-h1 {
-  margin-top: 20px;
+  align-items: center;
 }
 
 a {

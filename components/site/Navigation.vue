@@ -116,6 +116,7 @@ export default {
 nav ::v-deep {
   grid-row: 2;
   grid-column: 1 / span 2;
+  align-self: flex-start;
 
   overflow-y: scroll;
   width: 100vw; // shows scroll bar fully right
@@ -135,7 +136,8 @@ nav ::v-deep {
   a {
     display: block;
     border-bottom: 1px $color-white solid;
-    font-size: $h2;
+    @include fontSize(1rem, 2.5vw);
+
     text-decoration: none;
     text-transform: uppercase;
     padding: 15px 0;
