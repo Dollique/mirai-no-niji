@@ -5,7 +5,21 @@
     <main v-editable="blok">
       <h1>{{ blok.title }}</h1>
 
-      <rich-text-renderer :document="blok.body" />
+      <rich-text-renderer v-if="blok.body" :document="blok.body" />
+
+      <div v-if="blok.link_prev">
+        <pre>{{ blok.link_prev }}</pre>
+        <nuxt-link :to="blok.link_prev.cached_url">{{
+          blok.link_prev.cached_url
+        }}</nuxt-link>
+      </div>
+
+      <div v-if="blok.link_next">
+        <pre>{{ blok.link_next }}</pre>
+        <nuxt-link :to="blok.link_next.cached_url">{{
+          blok.link_next.cached_url
+        }}</nuxt-link>
+      </div>
     </main>
 
     <Footer />
@@ -24,7 +38,6 @@ export default {
   props: {
     blok: {
       type: Object,
-
       required: true,
     },
   },

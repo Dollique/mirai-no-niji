@@ -12,6 +12,7 @@ export default {
   asyncData(context) {
     const version =
       context.query._storyblok || context.isDev ? 'draft' : 'published'
+    // const version = process.env.MNN_STORYBLOK_VERSION
 
     const fullSlug =
       context.route.path === '/' || context.route.path === ''

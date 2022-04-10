@@ -1,5 +1,7 @@
 <template>
-  <Article :blok="story.content" />
+  <div>
+    <Article :blok="articles.story.content" />
+  </div>
 </template>
  
 <script>
@@ -9,12 +11,45 @@ export default {
   components: {
     Article,
   },
-  asyncData(context) {
+  async asyncData(context) {
     // Load the JSON from the API
     const version =
       context.query._storyblok || context.isDev ? 'draft' : 'published'
+    // const version = process.env.MNN_STORYBLOK_VERSION
 
-    return context.app.$storyapi
+    const [articlesRes] = await Promise.all([
+      context.app.$storyapi.get(`cdn/stories/articles/${context.params.slug}`, {
+        version,
+        resolve_relations: 'global_reference.reference',
+      }),
+
+      /* context.app.$storyapi.get(`cdn/links/`, {
+        starts_with: 'articles/', // exclude 'article' slug
+        version,
+        resolve_relations: 'global_reference.reference',
+      }), */
+    ]).catch((res) => {
+      if (!res.response) {
+        console.error(res)
+        context.error({
+          statusCode: 404,
+          message: 'Failed to receive content form api',
+        })
+      } else {
+        console.error(res.response.data)
+        context.error({
+          statusCode: res.response.status,
+          message: res.response.data,
+        })
+      }
+    })
+
+    return {
+      articles: articlesRes.data,
+      // links: linksRes.data.links,
+    }
+
+    /* return context.app.$storyapi
       .get(`cdn/stories/articles/${context.params.slug}`, {
         version,
         resolve_relations: 'global_reference.reference',
@@ -36,11 +71,12 @@ export default {
             message: res.response.data,
           })
         }
-      })
+      }) */
   },
   data() {
     return {
-      story: { content: {} },
+      articles: { content: {} },
+      links: {},
     }
   },
   mounted() {
