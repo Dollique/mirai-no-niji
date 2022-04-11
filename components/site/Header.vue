@@ -1,22 +1,28 @@
 <template>
-  <header class="grid grid-2col col-8" :class="{ navOpen }">
-    <template v-if="blok">
-      <template v-for="myblok in blok.globals">
-        <h1
-          v-if="myblok.component === 'global_reference'"
-          :key="myblok._uid"
-          class="grid-2col__left"
-        >
-          <nuxt-link to="/">{{
-            myblok.reference.content.site_title
-          }}</nuxt-link>
-        </h1>
-      </template>
-    </template>
+  <header class="col-8" :class="{ navOpen }">
+    <div class="wrapper-outer">
+      <div class="grid grid-2col wrapper-inner">
+        <template v-if="blok">
+          <template v-for="myblok in blok.globals">
+            <h1
+              v-if="myblok.component === 'global_reference'"
+              :key="myblok._uid"
+              class="grid-2col__left"
+            >
+              <nuxt-link to="/">{{
+                myblok.reference.content.site_title
+              }}</nuxt-link>
+            </h1>
+          </template>
+        </template>
 
-    <aside v-if="showNav" class="grid-2col__right">
-      <Burger />
-    </aside>
+        <aside v-if="showNav" class="grid-2col__right">
+          <Burger />
+        </aside>
+
+        <Lain />
+      </div>
+    </div>
 
     <Navigation :blok="blok" />
   </header>
@@ -25,11 +31,13 @@
 <script>
 import Burger from '~/components/site/Burger.vue'
 import Navigation from '~/components/site/Navigation.vue'
+import Lain from '~/components/site/Lain.vue'
 
 export default {
   components: {
     Burger,
     Navigation,
+    Lain,
   },
   props: {
     showNav: {
@@ -60,6 +68,19 @@ header {
   align-items: center;
 }
 
+.wrapper-outer {
+  min-height: 100px;
+
+  display: flex;
+}
+
+.wrapper-inner {
+  width: 100%;
+  flex: 1 auto;
+  align-items: center;
+  align-content: center;
+}
+
 a {
   text-decoration: none;
 }
@@ -70,11 +91,10 @@ a {
   height: 100vh;
   top: 0;
 
-  grid-auto-rows: minmax(100px, auto) 1fr;
+  // grid-auto-rows: minmax(100px, auto) 1fr;
+  flex-direction: column;
+  align-items: flex-start;
 
   background-color: $color-primary;
-
-  aside {
-  }
 }
 </style>

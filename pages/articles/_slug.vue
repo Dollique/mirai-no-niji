@@ -21,6 +21,7 @@ export default {
       context.app.$storyapi.get(`cdn/stories/articles/${context.params.slug}`, {
         version,
         resolve_relations: 'global_reference.reference',
+        resolve_links: 'url',
       }),
 
       /* context.app.$storyapi.get(`cdn/links/`, {

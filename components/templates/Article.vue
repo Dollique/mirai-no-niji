@@ -7,19 +7,7 @@
 
       <rich-text-renderer v-if="blok.body" :document="blok.body" />
 
-      <div v-if="blok.link_prev">
-        <pre>{{ blok.link_prev }}</pre>
-        <nuxt-link :to="blok.link_prev.cached_url">{{
-          blok.link_prev.cached_url
-        }}</nuxt-link>
-      </div>
-
-      <div v-if="blok.link_next">
-        <pre>{{ blok.link_next }}</pre>
-        <nuxt-link :to="blok.link_next.cached_url">{{
-          blok.link_next.cached_url
-        }}</nuxt-link>
-      </div>
+      <ArticleNavigation :blok="blok" />
     </main>
 
     <Footer />
@@ -29,21 +17,18 @@
 <script>
 import Header from '~/components/site/Header.vue'
 import Footer from '~/components/site/Footer.vue'
+import ArticleNavigation from '~/components/site/ArticleNavigation.vue'
 
 export default {
   components: {
     Header,
     Footer,
+    ArticleNavigation,
   },
   props: {
     blok: {
       type: Object,
       required: true,
-    },
-  },
-  computed: {
-    navOpen() {
-      return this.$store.state.navigation.navOpen
     },
   },
 }

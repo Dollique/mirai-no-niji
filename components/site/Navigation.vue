@@ -114,10 +114,13 @@ export default {
 @import 'assets/scss/variables/structure.scss';
 
 nav ::v-deep {
-  grid-row: 2;
-  grid-column: 1 / span 2;
+  // grid-row: 2;
+  // grid-column: 1 / span 2;
   align-self: flex-start;
 
+  height: calc(
+    100vh - 100px
+  ); // TODO -> 100px Header is min-height (can change!)
   overflow-y: scroll;
   width: 100vw; // shows scroll bar fully right
   margin-left: -$gutter;

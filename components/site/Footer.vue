@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <hr />
+    <Lain />
 
     <div class="footer__wrapper">
       <div class="left">
@@ -28,40 +28,22 @@
   </footer>
 </template>
 
+<script>
+import Lain from '~/components/site/Lain.vue'
+
+export default {
+  components: {
+    Lain,
+  },
+}
+</script>
+
 <style lang="scss" scoped>
 footer {
   @include addGutter;
 
   margin-top: 60px;
   @include fontSize(0.7rem, 2.5vw);
-}
-
-hr {
-  border: none;
-  border-bottom: 1px $color-white solid;
-  margin-top: 0px;
-  height: 11px;
-  width: 20px;
-
-  &:before,
-  &:after {
-    content: '';
-
-    display: block;
-    height: 0px;
-  }
-  &:before {
-    width: 20px;
-    border-bottom: 1px $color-white solid;
-    margin-top: 4px;
-    margin-left: 15px;
-  }
-  &:after {
-    width: calc(100vw - 9px - $gutter * 2);
-    border-bottom: 1px $color-white solid;
-    margin-top: 4px;
-    margin-left: 9px;
-  }
 }
 
 .footer__wrapper {
