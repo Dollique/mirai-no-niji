@@ -20,7 +20,7 @@
           <Burger />
         </aside>
 
-        <Lain />
+        <Lain :mirror="true" class="line" />
       </div>
     </div>
 
@@ -79,6 +79,11 @@ header {
   flex: 1 auto;
   align-items: center;
   align-content: center;
+}
+
+.line {
+  grid-column: 1 / span 2;
+  margin-top: 5px;
 }
 
 a {
