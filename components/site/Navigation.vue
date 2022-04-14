@@ -123,7 +123,6 @@ nav ::v-deep {
   ); // TODO -> 100px Header is min-height (can change!)
   overflow-y: scroll;
   width: 100vw; // shows scroll bar fully right
-  margin-left: -$gutter;
 
   ul {
     list-style: none;

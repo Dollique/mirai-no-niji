@@ -93,13 +93,19 @@ a {
 .navOpen {
   position: absolute;
   z-index: 10;
+  width: 100%;
   height: 100vh;
   top: 0;
+  margin: 0;
 
   // grid-auto-rows: minmax(100px, auto) 1fr;
   flex-direction: column;
   align-items: flex-start;
 
   background-color: $color-primary;
+
+  .wrapper-inner {
+    margin: 0 $gutter;
+  }
 }
 </style>

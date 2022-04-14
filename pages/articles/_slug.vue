@@ -3,7 +3,7 @@
     <Article :blok="articles.story.content" />
   </div>
 </template>
- 
+
 <script>
 import Article from '~/components/templates/Article.vue'
 
@@ -104,3 +104,4 @@ export default {
   },
 }
 </script>
+
