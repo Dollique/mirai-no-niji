@@ -1,7 +1,7 @@
 <template>
   <nav>
     <nuxt-link
-      v-if="blok.link_prev"
+      v-if="blok.link_prev.id !== ''"
       :to="'/' + blok.link_prev.cached_url"
       class="prev"
     >
@@ -19,7 +19,7 @@
     </nuxt-link>
 
     <nuxt-link
-      v-if="blok.link_next"
+      v-if="blok.link_next.id !== ''"
       :to="'/' + blok.link_next.cached_url"
       class="next"
     >

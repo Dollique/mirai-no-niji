@@ -66,6 +66,11 @@ export default {
 header {
   @include addGutter;
   align-items: center;
+  margin-bottom: 30px;
+
+  @include for-desktop-up {
+    margin-bottom: 60px;
+  }
 }
 
 .wrapper-outer {
