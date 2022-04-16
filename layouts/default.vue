@@ -1,5 +1,8 @@
 <template>
-  <Nuxt />
+  <div class="page_wrapper">
+    <Nuxt />
+    <canvas class="glitch"></canvas>
+  </div>
 </template>
 
 <script>
@@ -20,5 +23,88 @@ export default {
       document.querySelector('body').classList.toggle('navOpen')
     },
   },
+  mounted() {
+    /** GLITCH **/
+
+    const canvas = document.querySelector('.glitch')
+    const ctx = canvas.getContext('2d')
+    const colors = [
+      '#b4b2b5',
+      '#dfd73f',
+      '#6ed2dc',
+      '#66cf5d',
+      '#c542cb',
+      '#d0535e',
+      '#3733c9',
+    ]
+    let linePos = 0,
+      rAF
+
+    canvas.width = document.body.clientWidth
+    canvas.height = document.body.clientHeight
+
+    function glitch() {
+      rAF = window.requestAnimationFrame(glitch)
+
+      ctx.fillStyle = '#1a191c'
+      ctx.fillRect(0, 0, document.body.clientWidth, document.body.clientHeight)
+
+      ctx.shadowBlur = 0
+      ctx.shadowColor = 'none'
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+
+      for (let i = 0; i < 1000; i++) {
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.01})`
+        ctx.fillRect(
+          Math.floor(Math.random() * document.body.clientWidth),
+          Math.floor(Math.random() * document.body.clientHeight),
+          Math.floor(Math.random() * 30) + 1,
+          Math.floor(Math.random() * 30) + 1
+        )
+
+        ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.1})`
+        ctx.fillRect(
+          Math.floor(Math.random() * document.body.clientWidth),
+          Math.floor(Math.random() * document.body.clientHeight),
+          Math.floor(Math.random() * 25) + 1,
+          Math.floor(Math.random() * 25) + 1
+        )
+      }
+
+      ctx.fillStyle = colors[Math.floor(Math.random() * 40)]
+      ctx.fillRect(
+        Math.random() * document.body.clientWidth,
+        Math.random() * document.body.clientHeight,
+        Math.random() * document.body.clientWidth,
+        Math.random() * document.body.clientHeight
+      )
+      ctx.setTransform(1, 0, 0, 0.8, 0.2, 0)
+    }
+
+    glitch()
+
+    window.addEventListener('resize', () => {
+      canvas.width = document.body.clientWidth
+      canvas.height = document.body.clientHeight
+    })
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+.page_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch {
+  order: 1;
+  position: absolute;
+  z-index: 99;
+  overflow: hidden;
+  opacity: 0.4;
+  display: none;
+}
+</style>

@@ -7,7 +7,9 @@ Vue.use(VueRichTextRenderer)
 Vue.use(VueRichTextRenderer, {
   resolvers: {
     components: {
-      mytitle: Teaser
-    }
+      mytitle: Teaser,
+    },
   }
 });*/
+
+  
