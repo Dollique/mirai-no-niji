@@ -5,11 +5,15 @@
     <main v-editable="blok">
       <h1>{{ blok.title }}</h1>
 
-      <rich-text-renderer v-if="blok.body" :document="blok.body" />
-
-      <ArticleNavigation :blok="blok" />
+      <component
+        :is="blok.component"
+        v-for="blok in blok.body"
+        :key="blok._uid"
+        :blok="blok"
+      />
     </main>
 
+    <ArticleNavigation :blok="blok" />
     <Footer />
   </div>
 </template>
@@ -47,7 +51,7 @@ export default {
   grid-template-rows: auto 1fr auto;
 }
 
-main ::v-deep {
+main::v-deep {
   h1,
   p {
     @include addGutter;
@@ -57,16 +61,17 @@ main ::v-deep {
     padding-bottom: 55px;
   }
 
-  p {
+  p,
+  img {
     padding-bottom: 20px;
-
-    &:last-child {
-      padding-bottom: 0;
-    }
   }
 
   img {
     width: 100%;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
   }
 }
 </style>
