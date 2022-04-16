@@ -5,11 +5,13 @@ import VueRichTextRenderer from '@marvr/storyblok-rich-text-vue-renderer'
 import Teaser from '~/components/content/Title.vue'
 import Image from '~/components/content/Image.vue'
 
+Vue.component('myimage', Image)
+
 Vue.use(VueRichTextRenderer, {
   resolvers: {
     components: {
       mytitle: Teaser,
-      image: Image,
+      myimage: Image,
     },
   }
 });

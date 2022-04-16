@@ -9,6 +9,17 @@ export default {
       type: Object,
       required: true,
     },
+    body: {
+      type: Object,
+      required: false,
+      default: [],
+    },
+  },
+  mounted() {
+    if (typeof this.blok === 'undefined') {
+      // change the props.blok to be props.body (mutate props in nuxt)
+      // TODO
+    }
   },
 }
 </script>
