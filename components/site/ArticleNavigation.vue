@@ -73,7 +73,9 @@ nav {
     }
 
     &.prev {
-      margin-bottom: 30px;
+      @include for-phone-only {
+        margin-bottom: 30px;
+      }
       h2 {
         margin-left: 17px;
       }

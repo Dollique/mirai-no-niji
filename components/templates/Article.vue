@@ -47,6 +47,8 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+  max-width: $page-max-width;
+  margin: 0 auto;
 
   grid-template-rows: auto 1fr auto;
 }
