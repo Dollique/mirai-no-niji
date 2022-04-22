@@ -7,6 +7,10 @@
     <img
       v-editable="blok"
       :src="blok.src.filename"
+      :srcset="`${resize(blok.src.filename, '480x0')} 480w,
+              ${resize(blok.src.filename, '800x0')} 800w,
+              ${resize(blok.src.filename, '1200x0')} 1200w
+              `"
       :class="`align-${blok.align}`"
     />
   </div>
@@ -15,8 +19,12 @@
     v-else
     v-editable="blok"
     :src="blok.src.filename"
+    :srcset="`${resize(blok.src.filename, '480x0')} 480w,
+              ${resize(blok.src.filename, '800x0')} 800w,
+              ${resize(blok.src.filename, '1200x0')} 1200w
+              `"
     :class="`align-${blok.align}`"
-  />
+  >
 </template>
 
 <script>
@@ -34,6 +42,18 @@ export default {
       },
     }
   },
+  methods: {
+    resize(image, option) {
+      let imageService = '//img2.storyblok.com/'
+      let path = image.replace('https://a.storyblok.com', '') // -> /f/148502/718x112/769dd796c1/mind-control1_mobile.jpg
+
+      return imageService + option + path // -> //img2.storyblok.com//400x100/f/148502/718x112/769dd796c1/mind-control1_mobile.jpg
+    }
+  },
+  mounted() {
+    // var example = '//a.storyblok.com/f/39898/bd04dbf53c/amp_blog.jpg'
+    // console.log(this.resize(example, '500x500'))
+  }
 }
 </script>
 
