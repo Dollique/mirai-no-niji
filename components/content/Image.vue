@@ -1,13 +1,31 @@
 <template>
-  <img
-    v-editable="blok"
-    :src="blok.src.filename"
-    :srcset="`${resize(blok.src.filename, '480x0')} 480w,
+  <picture :class="`align-${blok.align}`">
+    <source
+      v-if="blok.mobile && blok.mobile.id"
+      media="(max-width: 799px)"
+      :src="blok.mobile.filename"
+      :srcset="`${resize(blok.mobile.filename, '480x0')} 480w,
+              ${resize(blok.mobile.filename, '800x0')} 800w,
+              ${resize(blok.mobile.filename, '1200x0')} 1200w
+              `"
+    />
+    <source
+      v-editable="blok"
+      media="(min-width: 800px)"
+      :src="blok.src.filename"
+      :srcset="`${resize(blok.src.filename, '480x0')} 480w,
               ${resize(blok.src.filename, '800x0')} 800w,
               ${resize(blok.src.filename, '1200x0')} 1200w
               `"
-    :class="`align-${blok.align}`"
-  />
+    />
+    <img
+      :src="blok.src.filename"
+      :srcset="`${resize(blok.src.filename, '480x0')} 480w,
+              ${resize(blok.src.filename, '800x0')} 800w,
+              ${resize(blok.src.filename, '1200x0')} 1200w
+              `"
+    />
+  </picture>
 </template>
 
 <script>
@@ -20,6 +38,8 @@ export default {
   },
   methods: {
     resize(image, option) {
+      if (!image) return
+
       let imageService = '//img2.storyblok.com/'
       let path = image.replace('https://a.storyblok.com', '') // -> /f/148502/718x112/769dd796c1/mind-control1_mobile.jpg
 
@@ -34,7 +54,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
+picture {
+  display: block;
+
   &.align {
     &-center {
       padding-left: $gutter;
