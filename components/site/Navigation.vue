@@ -124,20 +124,9 @@ nav ::v-deep {
   overflow-y: scroll;
   width: 100vw; // shows scroll bar fully right
 
-  ul {
-    list-style: none;
-    margin: 0 $gutter;
-    padding: 0;
-
-    ul {
-      margin-left: 20px;
-    }
-  }
-  li {
-  }
   a {
     display: block;
-    border-bottom: 1px $color-white solid;
+    border-top: 1px $color-white solid;
     @include fontSize(1rem, 2.5vw);
 
     text-decoration: none;
@@ -147,6 +136,38 @@ nav ::v-deep {
     &:hover {
       background-color: $color-hover;
     }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0 $gutter;
+    padding: 0;
+
+    li {
+      &:first-child a {
+        border-top: none;
+      }
+      &:last-child a {
+        border-bottom: 1px $color-white solid;
+      }
+    }
+
+    ul {
+      margin-left: 20px;
+      padding-bottom: 15px;
+
+      a {
+        @include fontSize(0.7rem, 1.5vw);
+        border-top: none;
+      }
+
+      li:last-child a {
+        border-bottom: none;
+      }
+    }
+  }
+
+  li {
   }
 }
 </style>
