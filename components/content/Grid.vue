@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="grid-wrapper">
+  <div v-editable="blok" class="grid-wrapper flex">
     <div v-for="blok in blok.columns" :key="blok._uid" class="">
       <component :is="blok.component" :blok="blok" />
     </div>
@@ -16,3 +16,21 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.grid-wrapper {
+  flex-direction: column;
+
+  @include for-tablet-portrait-up {
+    flex-direction: row;
+
+    div {
+      flex: 1.25;
+
+      &:last-child {
+        flex: 0.75;
+      }
+    }
+  }
+}
+</style>

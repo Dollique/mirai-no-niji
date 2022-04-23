@@ -1,8 +1,8 @@
 <template>
   <div :class="`align-${blok.image[0].align}`" class="quote-wrapper">
     <blockquote>
-      {{ blok.quote }}
-      {{ blok.author }}
+      <span class="quote">{{ blok.quote }}</span>
+      <span class="author">{{ blok.author }}</span>
     </blockquote>
 
     <component :is="blok.image[0].component" :blok="blok.image[0]" />
@@ -51,9 +51,11 @@ export default {
 
     z-index: -1;
   }
+
   blockquote {
     min-height: 30vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -62,6 +64,18 @@ export default {
     text-transform: uppercase;
 
     @include fontSize(0.8rem, 2.5vw);
+  }
+
+  .quote {
+    &:before,
+    &:after {
+      content: '"';
+    }
+  }
+
+  .author {
+    display: block;
+    padding-top: 5%;
   }
 }
 </style>
