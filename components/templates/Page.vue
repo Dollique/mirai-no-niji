@@ -67,10 +67,14 @@ export default {
   background-size: cover;
 }
 
-h1 {
-  text-align: center;
-  width: 100%;
+// Flexbox
+
+.page {
+  flex-direction: column;
+  justify-content: center;
 }
+
+// Home
 
 .route__home .page {
   position: absolute;
@@ -78,10 +82,7 @@ h1 {
   width: 100%;
 }
 
-.page {
-  flex-direction: column;
-  justify-content: center;
-}
+// background
 
 [data-bg-image-mobile] {
   background-image: var(--bg-image-mobile);
@@ -92,4 +93,29 @@ h1 {
     background-image: var(--bg-image-desktop);
   }
 }
-</style> 
+
+
+/*
+ * CONTENT
+*/
+
+// GRID component
+
+.grid-wrapper::v-deep {
+  margin-top: 20px;
+  align-items: center;
+
+  h2,
+  p {
+    padding-bottom: 20px;
+    padding-left: $gutter;
+  }
+}
+
+// heading
+
+h1 {
+  text-align: center;
+  width: 100%;
+}
+</style>
