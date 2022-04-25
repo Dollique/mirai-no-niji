@@ -55,12 +55,27 @@ export default {
 
 main::v-deep {
   h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   p {
     @include addGutter;
   }
 
   h1 {
     padding-bottom: 55px;
+  }
+
+  h2 {
+    margin-bottom: 14px;
+    padding-left: 9px;
+
+    text-shadow: 22px -9px $color-gray;
+    @include for-tablet-portrait-up {
+      text-shadow: 42px -18px $color-gray;
+    }
   }
 
   p,
