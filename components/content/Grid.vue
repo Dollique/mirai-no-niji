@@ -31,6 +31,11 @@ export default {
         flex: 0.75;
       }
     }
+
+    ::v-deep > *:not(.quote-wrapper) img {
+      padding-top: 0;
+      margin-top: 0;
+    }
   }
 }
 </style>

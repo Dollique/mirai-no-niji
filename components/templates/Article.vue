@@ -65,15 +65,31 @@ main::v-deep {
 
   p,
   img {
-    padding-bottom: 20px;
+    padding-bottom: 8vw;
+
+    @include for-tablet-landscape-up {
+      padding-bottom: 2vw;
+    }
   }
 
-  img {
+  > *:not(.quote-wrapper) {
+    img {
+      width: 100%;
+      padding-top: 7vw;
+      padding-bottom: 9vw;
+    }
+  }
+
+  > .quote-wrapper {
     width: 100%;
+    margin-top: 7vw;
+    margin-bottom: 9vw;
   }
 
-  &:last-child {
+  > *:last-child,
+  > *:last-child img {
     padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 </style>

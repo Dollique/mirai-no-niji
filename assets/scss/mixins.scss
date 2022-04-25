@@ -36,6 +36,7 @@
 // https://blog.logrocket.com/the-elements-of-responsive-typography/
 @mixin fontSize($rate, $vw, $max:0) {
   font-size: calc($rate + $vw);
+  line-height: 1.2;
 
   @include for-big-desktop-up {
     @if $max != 0 {
