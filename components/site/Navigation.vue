@@ -121,8 +121,7 @@ nav ::v-deep {
   height: calc(
     100vh - 100px
   ); // TODO -> 100px Header is min-height (can change!)
-  overflow-y: scroll;
-  width: 100vw; // shows scroll bar fully right
+  overflow-y: auto;
 
   a {
     display: block;
