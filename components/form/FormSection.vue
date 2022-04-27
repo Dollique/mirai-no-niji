@@ -1,11 +1,11 @@
 <template>
-  <form v-editable="blok" class="form-section">
-    <fieldset v-for="blok in blok.fields" :key="blok._uid">
-        <component :is="blok.component" :blok="blok" />
+  <form class="form-section" @submit.prevent="handleFormSubmit">
+    <fieldset v-for="(blok, index) in blok.fields" :key="blok._uid">
+        <component :is="blok.component" :blok="blok" :inputs.sync="inputs[index]" />
     </fieldset>
 
     <fieldset>
-      <button type="submit" class="form__button" data-callback="handleFormSubmit">Submit</button>
+      <button type="submit" class="form__button">Submit</button>
     </fieldset>
   </form>
 </template>
@@ -18,45 +18,51 @@
         required: true,
       },
     },
-  }
+    data(){
+      return {
+        inputs : [] // add form fields from child component
+      }
+    },
+    methods: {
+      handleFormSubmit() {
+        var formApiEndpoint = 'http://geyst.appengine.flow.ch:8080'
 
-  var handleFormSubmit = function () {
-    var formApiEndpoint = 'http://geyst.appengine.flow.ch:8080'
+        console.log("test", this.inputs);
 
-    console.log("test");
-
-    /*
-
-    var formRequest = new Request(formApiEndpoint, {
-        method: 'POST',
-        body: JSON.stringify({
-          name: nameInput.value,
-          message: messageInput.value
+        var formRequest = new Request(formApiEndpoint, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: this.inputs["firstname"],
+            message: this.inputs["mail"]
+          })
         })
-      })
 
-      fetch(formRequest)
-        .then(function(response) {
-          if (response.status === 200) {
-            return response.json()
-          } else {
-            throw new Error('Something went wrong on api server!')
-          }
-        })
-        .then(function(response) {
-          successEl.style.display = 'block'
+        fetch(formRequest)
+          .then(function(response) {
+            if (response.status === 200) {
+              console.log("it worked aaa");
+              return response.json()
+            } else {
+              throw new Error('Something went wrong on api server!')
+            }
+          })
+          .then(function(response) {
+            successEl.style.display = 'block'
+            buttonEl.style.display = 'block'
+            sendingEl.style.display = 'none'
+            nameInput.value = ''
+            messageInput.value = ''
+          }).catch(function(error) {
+          errorsEl.style.display = 'block'
           buttonEl.style.display = 'block'
           sendingEl.style.display = 'none'
-          nameInput.value = ''
-          messageInput.value = ''
-        }).catch(function(error) {
-        errorsEl.style.display = 'block'
-        buttonEl.style.display = 'block'
-        sendingEl.style.display = 'none'
-        console.error(error)
-      })
-
-    */
-
+          console.error(error)
+        })
+      }
+    },
+    mounted() {
+      console.log("MOUNTED", this.inputs);
+    }
   }
+
 </script>
