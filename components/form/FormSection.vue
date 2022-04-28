@@ -1,7 +1,8 @@
 <template>
   <form class="form-section" @submit.prevent="handleFormSubmit">
     <fieldset v-for="(blok, index) in blok.fields" :key="blok._uid">
-        <component :is="blok.component" :blok="blok" :inputs.sync="inputs[index]" />
+        <!--component :is="blok.component" :blok="blok" :inputs.sync="inputs[index]" v-model="inputs" /-->
+        <component :is="blok.component" :blok="blok" :inputs.sync="inputs2[index]" v-model="inputs[index]" />
     </fieldset>
 
     <fieldset>
@@ -20,7 +21,8 @@
     },
     data(){
       return {
-        inputs : [] // add form fields from child component
+        inputs : [], // add form fields from child component
+        inputs2 : []
       }
     },
     methods: {
@@ -28,6 +30,8 @@
         var formApiEndpoint = 'http://geyst.appengine.flow.ch:8080'
 
         console.log("test", this.inputs);
+        console.log("test 2", this.inputs2);
+        console.log("test VUEX", this.$store.state.forms.formData);
 
         var formRequest = new Request(formApiEndpoint, {
           method: 'POST',
