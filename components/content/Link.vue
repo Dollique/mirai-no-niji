@@ -1,6 +1,6 @@
 <template>
   <nuxt-link v-editable="blok" :to="blok.href['cached_url']" :class="blok.type">
-    {{ blok.title }}
+    <span>{{ blok.title }}</span>
 
     <svg
       width="59"
@@ -42,7 +42,7 @@ a {
   }
 
   svg {
-    padding-left: 20px;
+    margin-left: 20px;
   }
 
   &:hover {
@@ -53,6 +53,7 @@ a {
 }
 
 .home {
+  @include fontSize(2.5rem, 3.5vw);
   text-align: center;
 }
 </style>

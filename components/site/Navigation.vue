@@ -123,6 +123,10 @@ nav ::v-deep {
   ); // TODO -> 100px Header is min-height (can change!)
   overflow-y: auto;
 
+  @include for-tablet-landscape-up {
+    margin-top: 1.5rem;
+  }
+
   a {
     display: block;
     border-top: 1px $color-white solid;

@@ -91,6 +91,18 @@ header {
   margin-top: 5px;
 }
 
+.grid-2col__left {
+  @include for-tablet-landscape-up {
+    padding-top: 0.8rem;
+  }
+  @include for-desktop-up {
+    padding-top: 1.3rem;
+  }
+  @include for-big-desktop-up {
+    padding-top: 2.3rem;
+  }
+}
+
 a {
   text-decoration: none;
 }

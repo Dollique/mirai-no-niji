@@ -42,15 +42,5 @@
     @if $max != 0 {
       font-size: $max;
     }
-  } 
-
-  /*font-size: $min;
-
-  @media (min-width: 414px) {
-    font-size: calc($min + $vw);
   }
-
-  @include for-big-desktop-up {
-    font-size: $max;
-  }*/
 }

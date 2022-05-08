@@ -46,12 +46,15 @@ export default {
 
   padding: $gutter;
   padding-top: 0;
+  padding-bottom: 2rem;
 }
 </style>
 
-<style>
+<style lang="scss" scoped>
 .slider-item {
-  font-size: 2em;
+  //font-size: 2em;
+  @include fontSize(1.5rem, 2.5vw);
+
   text-align: center;
 
   margin-top: 0;

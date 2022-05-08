@@ -77,8 +77,8 @@ export default {
 // Home
 
 .route__home .page {
-  position: absolute;
-  height: 100vh;
+  /*position: absolute;
+  height: 100vh;*/
   width: 100%;
 }
 
@@ -93,7 +93,6 @@ export default {
     background-image: var(--bg-image-desktop);
   }
 }
-
 
 /*
  * CONTENT
