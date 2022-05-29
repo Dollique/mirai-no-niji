@@ -119,7 +119,7 @@ nav ::v-deep {
   align-self: flex-start;
 
   height: calc(
-    100vh - 100px
+    100vh - 100px - 1.5rem
   ); // TODO -> 100px Header is min-height (can change!)
   overflow-y: auto;
 
@@ -145,6 +145,7 @@ nav ::v-deep {
     list-style: none;
     margin: 0 $gutter;
     padding: 0;
+    padding-bottom: 1.5rem;
 
     li {
       &:first-child a {
