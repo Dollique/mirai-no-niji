@@ -9,6 +9,7 @@ import Grid from '~/components/content/Grid.vue'
 import SliderText from '~/components/content/SliderText.vue'
 import RichText from '~/components/content/RichText.vue'
 import Image from '~/components/content/Image.vue'
+import Video from '~/components/content/Video.vue'
 import Quote from '~/components/content/Quote.vue'
 
 // form
@@ -26,6 +27,7 @@ Vue.component('SB_Slidertext', SliderText)
 Vue.component('SB_Link', Feature)
 Vue.component('SB_Richtext', RichText)
 Vue.component('SB_Image', Image)
+Vue.component('SB_Video', Video)
 Vue.component('SB_Quote', Quote)
 Vue.component('SB_Form-input', FormInput)
 Vue.component('SB_Form-section', FormSection)
