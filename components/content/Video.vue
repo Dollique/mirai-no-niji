@@ -1,5 +1,5 @@
 <template>
-  <video mute autoplay loop controls>
+  <video muted autoplay loop controls>
     <source :src="blok.video_webm.filename" type="video/webm" />
     <source :src="blok.video_mp4.filename" type="video/mp4" />
   </video>
