@@ -26,6 +26,7 @@ hr {
   margin-left: 9px;
   height: 7px;
   width: calc(100% - 9px);
+  overflow: visible;
 
   &.mirror {
     transform: scaleX(-1);
